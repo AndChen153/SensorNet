@@ -35,7 +35,7 @@ def get_x_rotation(x,y,z):
     return math.degrees(radians)
  
 bus = smbus.SMBus(1) # bus = smbus.SMBus(0)
-address = 0x68       # via i2cdetect
+address = 0x69       # via i2cdetect
 
 while True:
     # Activate to be able to address the module
@@ -48,12 +48,12 @@ while True:
     gryo_yout = read_word_2c(0x45)
     gryo_zout = read_word_2c(0x47)
     
-    print "gryo_xout: ", ("%5d" % gryo_xout), " skaliert: ", (gryo_xout / 131)
-    print "gryo_yout: ", ("%5d" % gryo_yout), " skaliert: ", (gryo_yout / 131)
-    print "gryo_zout: ", ("%5d" % gryo_zout), " skaliert: ", (gryo_zout / 131)
+    print "gryo_xout: ", ("%5d" % gryo_xout), " scaled: ", (gryo_xout / 131)
+    print "gryo_yout: ", ("%5d" % gryo_yout), " scaled: ", (gryo_yout / 131)
+    print "gryo_zout: ", ("%5d" % gryo_zout), " scaled: ", (gryo_zout / 131)
     
     print
-    print "Beschleunigungssensor"
+    print "Accelerometer"
     print "---------------------"
     
     acceleration_xout = read_word_2c(0x3b)
