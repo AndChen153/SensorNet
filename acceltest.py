@@ -52,7 +52,7 @@ def get_x_rotation(x,y,z):
  
 bus = smbus.SMBus(1) # bus = smbus.SMBus(0)
 address = 0x68       # via i2cdetect
-bus2 = smbus.SMBus(2) # bus = smbus.SMBus(0)
+bus2 = smbus.SMBus(1) # bus = smbus.SMBus(0)
 address2 = 0x68       # via i2cdetect
 
 
