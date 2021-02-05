@@ -1,0 +1,2 @@
+# SensorNet
+Web of accelerometers
