@@ -24,11 +24,11 @@ def read_word_2c(reg):
         return val
 
 def read_byte2(reg):
-    return bus2.read_byte_data(address, reg)
+    return bus2.read_byte_data(address2, reg)
  
 def read_word2(reg):
-    h = bus2.read_byte_data(address, reg)
-    l = bus2.read_byte_data(address, reg+1)
+    h = bus2.read_byte_data(address2, reg)
+    l = bus2.read_byte_data(address2, reg+1)
     value = (h << 8) + l
     return value
  
@@ -52,7 +52,7 @@ def get_x_rotation(x,y,z):
  
 bus = smbus.SMBus(1) # bus = smbus.SMBus(0)
 address = 0x68       # via i2cdetect
-bus2 = smbus.SMBus(0) # bus = smbus.SMBus(0)
+bus2 = smbus.SMBus(1) # bus = smbus.SMBus(0)
 address2 = 0x69       # via i2cdetect
 
 
