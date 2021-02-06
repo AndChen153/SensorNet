@@ -23,22 +23,6 @@ def read_word_2c(reg):
     else:
         return val
 
-def read_byte2(reg):
-    return bus2.read_byte_data(address2, reg)
- 
-def read_word2(reg):
-    h = bus2.read_byte_data(address2, reg)
-    l = bus2.read_byte_data(address2, reg+1)
-    value = (h << 8) + l
-    return value
- 
-def read_word_2c2(reg):
-    val = read_word2(reg)
-    if (val >= 0x8000):
-        return -((65535 - val) + 1)
-    else:
-        return val
- 
 def dist(a,b):
     return math.sqrt((a*a)+(b*b))
  
@@ -56,7 +40,7 @@ address = 0x68       # via i2cdetect
 while True:
     # Activate to be able to address the module
     bus.write_byte_data(address, power_mgmt_1, 0)
-
+    '''
     print "Gyro"
     print "--------"
     
@@ -67,7 +51,7 @@ while True:
     print "gryo_xout: ", ("%5d" % gryo_xout), " scaled: ", (gryo_xout / 131)
     print "gryo_yout: ", ("%5d" % gryo_yout), " scaled: ", (gryo_yout / 131)
     print "gryo_zout: ", ("%5d" % gryo_zout), " scaled: ", (gryo_zout / 131)
-    
+    '''
     print
     print "Accelerometer"
     print "---------------------"
@@ -84,7 +68,7 @@ while True:
     print "acceleration_yout: ", ("%6d" % acceleration_yout), " Scaled: ", acceleration_yout_scaled
     print "acceleration_zout: ", ("%6d" % acceleration_zout), " Scaled: ", acceleration_zout_scaled
     
-    print "X Rotation: " , get_x_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
-    print "Y Rotation: " , get_y_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
+    #print "X Rotation: " , get_x_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
+    #print "Y Rotation: " , get_y_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
 
     time.sleep(5)
