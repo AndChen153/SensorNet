@@ -40,7 +40,8 @@ address = 0x68       # via i2cdetect
 
 i = 0
 while i < 3:
-    if input("a to continue") == "a":
+    yn = input("a to continue")
+    if yn == "a":
         continue
 
     f = open("data{0}.txt".format(i), "w")
