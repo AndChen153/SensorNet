@@ -35,5 +35,9 @@ def plot_subject(subject):
     plt.show()
 
 subjects = load_dataset()
-print(subjects[0])
-plot_subject(subjects[0])
+#print(subjects[0])
+plot_subject(subjects[2])
+
+print(" o")
+print("/|\ ")
+print(" /\ ")

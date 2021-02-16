@@ -42,25 +42,10 @@ cycle = 0
 while cycle < 3:
     yn = raw_input("a to continue")
     if yn == "a":
-        f = open("data{0}.txt".format(cycle), "w")
+        f = open("data{0}.csv".format(cycle), "w")
         for i in range(1000):
             # Activate to be able to address the module
             bus.write_byte_data(address, power_mgmt_1, 0)
-            '''
-            print "Gyro"
-            print "--------"
-            
-            gryo_xout = read_word_2c(0x43)
-            gryo_yout = read_word_2c(0x45)
-            gryo_zout = read_word_2c(0x47)
-            
-            print "gryo_xout: ", ("%5d" % gryo_xout), " scaled: ", (gryo_xout / 131)
-            print "gryo_yout: ", ("%5d" % gryo_yout), " scaled: ", (gryo_yout / 131)
-            print "gryo_zout: ", ("%5d" % gryo_zout), " scaled: ", (gryo_zout / 131)
-            '''
-            #print
-            #print "Accelerometer"
-            #print "---------------------"
             
             acceleration_xout = read_word_2c(0x3b)
             acceleration_yout = read_word_2c(0x3d)
@@ -74,8 +59,8 @@ while cycle < 3:
             #print "acceleration_yout: ", ("%6d" % acceleration_yout), " Scaled: ", acceleration_yout_scaled
             #print "acceleration_zout: ", ("%6d" % acceleration_zout), " Scaled: ", acceleration_zout_scaled
             
-            x_rotation = get_x_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
-            y_rotation = get_y_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
+            #x_rotation = get_x_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
+            #y_rotation = get_y_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
 
             #print "X Rotation: " , x_rotation
             #print "Y Rotation: " , y_rotation
