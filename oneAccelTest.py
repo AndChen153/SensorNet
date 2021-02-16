@@ -37,7 +37,7 @@ def get_x_rotation(x,y,z):
 bus = smbus.SMBus(1) # bus = smbus.SMBus(0)
 address = 0x68       # via i2cdetect
 
-f = open("demofile2.txt", "a")
+f = open("data.txt", "a")
 
 for i in range(50):
     # Activate to be able to address the module
@@ -75,7 +75,7 @@ for i in range(50):
 
     print "X Rotation: " , x_rotation
     print "Y Rotation: " , y_rotation
-    x = '{0} {1} {2} {3}'.format(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled, x_rotation, y_rotation)
+    x = '{0} {1} {2} {3} \n'.format(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled, x_rotation, y_rotation)
     f.write(x)
 
     time.sleep(0.01)
