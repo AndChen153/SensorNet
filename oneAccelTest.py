@@ -37,11 +37,13 @@ def get_x_rotation(x,y,z):
 bus = smbus.SMBus(1) # bus = smbus.SMBus(0)
 address = 0x68       # via i2cdetect
 
-f = open("data.txt", "w")
+
 i = 0
 while i < 3:
     if input("a to continue") == "a":
         continue
+
+    f = open("data{0}.txt".format(i), "w")
     for i in range(10000):
         # Activate to be able to address the module
         bus.write_byte_data(address, power_mgmt_1, 0)
