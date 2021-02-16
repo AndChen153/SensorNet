@@ -39,7 +39,7 @@ address = 0x68       # via i2cdetect
 
 f = open("data.txt", "w")
 
-for i in range(50):
+for i in range(100):
     # Activate to be able to address the module
     bus.write_byte_data(address, power_mgmt_1, 0)
     '''
