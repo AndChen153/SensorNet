@@ -75,7 +75,8 @@ for i in range(50):
 
     print "X Rotation: " , x_rotation
     print "Y Rotation: " , y_rotation
-    f.write(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled, get_x_rotation)
+    x = (str(acceleration_xout_scaled), str(acceleration_yout_scaled), str(acceleration_zout_scaled), str(x_rotation), str(y_rotation))
+    f.write(x)
 
     time.sleep(0.01)
 
