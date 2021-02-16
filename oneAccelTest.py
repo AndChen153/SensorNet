@@ -86,5 +86,5 @@ while i < 3:
 
         print("data{0}.txt printed".format(i))
         f.close()
-        i += 1
+    i += 1
 
