@@ -75,7 +75,8 @@ for i in range(50):
 
     print "X Rotation: " , x_rotation
     print "Y Rotation: " , y_rotation
-    x = '{0} {1} {2} {3} \n'.format(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled, x_rotation, y_rotation)
+    y = "\n"
+    x = '{0} {1} {2} {3} {4}'.format(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled, x_rotation, y_rotation, y)
     f.write(x)
 
     time.sleep(0.01)
