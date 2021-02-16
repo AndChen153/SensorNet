@@ -38,11 +38,11 @@ bus = smbus.SMBus(1) # bus = smbus.SMBus(0)
 address = 0x68       # via i2cdetect
 
 
-i = 0
-while i < 3:
+cycle = 0
+while cycle < 3:
     yn = raw_input("a to continue")
     if yn == "a":
-        f = open("data{0}.txt".format(i), "w")
+        f = open("data{0}.txt".format(cycle), "w")
         for i in range(1000):
             # Activate to be able to address the module
             bus.write_byte_data(address, power_mgmt_1, 0)
@@ -79,12 +79,12 @@ while i < 3:
 
             #print "X Rotation: " , x_rotation
             #print "Y Rotation: " , y_rotation
-            x = '{0},{1},{2} \n'.format(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
+            x = '{0},{1},{2},{3} \n'.format(i,acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
             f.write(x)
 
             time.sleep(0.0001)
 
-        print("data{0}.txt printed".format(i))
+        print("data{0}.txt printed".format(cycle))
         f.close()
-    i += 1
+    cycle += 1
 
