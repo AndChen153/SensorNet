@@ -9,3 +9,6 @@ https://www.i2cdevlib.com/devices/mpu6050#registers
 
 https://www.electronicwings.com/raspberry-pi/mpu6050-accelerometergyroscope-interfacing-with-raspberry-pi\
 https://tutorials-raspberrypi.com/measuring-rotation-and-acceleration-raspberry-pi/
+
+neuralnetwork
+https://machinelearningmastery.com/how-to-load-and-explore-a-standard-human-activity-recognition-problem/
