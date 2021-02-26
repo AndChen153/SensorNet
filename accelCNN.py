@@ -52,13 +52,11 @@ subjects = load_datasets()
 #plot_subject(subjects[0])
 columns = ["time", "x", "y", "z", "label"]
 
-dataset = pd.DataFrame(data = subjects[0], columns = columns)
-dataset2 = pd.DataFrame(data = subjects[1], columns = columns)
-dataset3 = pd.DataFrame(data = subjects[2], columns = columns)
-#print(dataset.head())
-#print(dataset.shape)
-#print(dataset.info())
+datasets = []
+for i in range(0,len(subjects)):
+    datasets.append(pd.DataFrame(data = subjects[i], columns = columns))
 
+print()
 
 def get_frames(df):
     frames = []
@@ -77,8 +75,8 @@ def get_frames(df):
     labels = np.asarray(labels)
     return frames, labels
 
-X_train, y_train = get_frames([dataset])
-X_test, y_test = get_frames([dataset3])
+X_train, y_train = get_frames([datasets[0],datasets[1],datasets[2],datasets[3],datasets[5],datasets[6],datasets[7],datasets[8]])
+X_test, y_test = get_frames([datasets[4],datasets[9]])
 
 X_train = X_train.reshape(1, 1000, 3, 1)
 X_test = X_test.reshape(1, 1000, 3, 1)
