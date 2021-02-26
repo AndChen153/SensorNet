@@ -82,7 +82,7 @@ X_test, y_test = get_frames([dataset3])
 
 X_train = X_train.reshape(1, 1000, 3, 1)
 X_test = X_test.reshape(1, 1000, 3, 1)
-print(X_train[0].shape, X_test[0].shape)
+print(X_train, X_test)
 
 model = Sequential()
 model.add(Conv2D(16, (2, 2), activation = 'relu', input_shape = X_train[0].shape))
