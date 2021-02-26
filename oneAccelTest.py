@@ -69,6 +69,6 @@ while cycle < 10:
         time.sleep(0.0001)
 
         print("data{0}.txt printed".format(cycle))
-        f.close()
+    f.close()
     cycle += 1
 
