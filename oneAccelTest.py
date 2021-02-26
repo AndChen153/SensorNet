@@ -65,7 +65,7 @@ while cycle < 10:
         #print "X Rotation: " , x_rotation
         #print "Y Rotation: " , y_rotation
         x = '{0},{1},{2},{3},{4} \n'.format(i,acceleration_xout, acceleration_yout, acceleration_zout, int(label))
-        #f.write(x)
+        f.write(x)
 
         time.sleep(0.0001)
 
