@@ -39,35 +39,34 @@ address = 0x68       # via i2cdetect
 
 
 cycle = 0
-while cycle < 3:
-    yn = raw_input("a to continue")
-    if yn == "a":
-        f = open("data{0}.csv".format(cycle), "w")
-        for i in range(1000):
-            # Activate to be able to address the module
-            bus.write_byte_data(address, power_mgmt_1, 0)
-            
-            acceleration_xout = read_word_2c(0x3b)
-            acceleration_yout = read_word_2c(0x3d)
-            acceleration_zout = read_word_2c(0x3f)
-            
-            acceleration_xout_scaled = acceleration_xout / 16384.0
-            acceleration_yout_scaled = acceleration_yout / 16384.0
-            acceleration_zout_scaled = acceleration_zout / 16384.0
-            
-            #print "acceleration_xout: ", ("%6d" % acceleration_xout), " Scaled: ", acceleration_xout_scaled
-            #print "acceleration_yout: ", ("%6d" % acceleration_yout), " Scaled: ", acceleration_yout_scaled
-            #print "acceleration_zout: ", ("%6d" % acceleration_zout), " Scaled: ", acceleration_zout_scaled
-            
-            #x_rotation = get_x_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
-            #y_rotation = get_y_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
+while cycle < 10:
+    label = raw_input("a to continue")
+    f = open("data{0}.csv".format(cycle), "w")
+    for i in range(1000):
+        # Activate to be able to address the module
+        bus.write_byte_data(address, power_mgmt_1, 0)
+        
+        acceleration_xout = read_word_2c(0x3b)
+        acceleration_yout = read_word_2c(0x3d)
+        acceleration_zout = read_word_2c(0x3f)
+        
+        acceleration_xout_scaled = acceleration_xout / 16384.0
+        acceleration_yout_scaled = acceleration_yout / 16384.0
+        acceleration_zout_scaled = acceleration_zout / 16384.0
+        
+        #print "acceleration_xout: ", ("%6d" % acceleration_xout), " Scaled: ", acceleration_xout_scaled
+        #print "acceleration_yout: ", ("%6d" % acceleration_yout), " Scaled: ", acceleration_yout_scaled
+        #print "acceleration_zout: ", ("%6d" % acceleration_zout), " Scaled: ", acceleration_zout_scaled
+        
+        #x_rotation = get_x_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
+        #y_rotation = get_y_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
 
-            #print "X Rotation: " , x_rotation
-            #print "Y Rotation: " , y_rotation
-            x = '{0},{1},{2},{3} \n'.format(i,acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
-            f.write(x)
+        #print "X Rotation: " , x_rotation
+        #print "Y Rotation: " , y_rotation
+        x = '{0},{1},{2},{3},{4} \n'.format(i,acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled, int(label))
+        f.write(x)
 
-            time.sleep(0.0001)
+        time.sleep(0.0001)
 
         print("data{0}.txt printed".format(cycle))
         f.close()

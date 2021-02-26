@@ -1,12 +1,13 @@
 # TensorFlow and tf.keras
-#import tensorflow as tf
-#from tensorflow import keras
+import tensorflow as tf
+from tensorflow import keras
 
 # Helper libraries
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from os import listdir
+from scipy import stats
 import csv
 
 def load_dataset():
@@ -36,8 +37,6 @@ def plot_subject(subject):
 
 subjects = load_dataset()
 #print(subjects[0])
+plot_subject(subjects[0])
+plot_subject(subjects[1])
 plot_subject(subjects[2])
-
-print(" o")
-print("/|\ ")
-print(" /\ ")
