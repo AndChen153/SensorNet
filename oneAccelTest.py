@@ -42,6 +42,7 @@ cycle = 0
 while cycle < 10:
     label = raw_input("a to continue")
     f = open("data{0}.csv".format(cycle), "w")
+    print("data{0}.txt printed".format(cycle))
     for i in range(1000):
         # Activate to be able to address the module
         bus.write_byte_data(address, power_mgmt_1, 0)
@@ -68,7 +69,7 @@ while cycle < 10:
 
         time.sleep(0.0001)
 
-        print("data{0}.txt printed".format(cycle))
+        
     f.close()
     cycle += 1
 
