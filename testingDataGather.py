@@ -35,9 +35,9 @@ def get_x_rotation(x,y,z):
     radians = math.atan2(y, dist(x,z))
     return math.degrees(radians)
 
-def find_num(label):
+def find_num():
     highest = 0
-    for filename in listdir('./testingdata/data{0}'.format(label)):
+    for filename in listdir('./testingdata'):
         highest += 1
     return highest
  
@@ -47,7 +47,7 @@ address = 0x68       # via i2cdetect
 cycle = 0
 while True:
     label = raw_input("activity label? (runs 5 times)")
-    low = find_num(label)
+    low = find_num()
     for i in range (low,low+5):
         start = raw_input("start?")
         print("/testingdata/data{0}.csv printed".format(str(i)))
