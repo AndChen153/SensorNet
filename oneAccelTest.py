@@ -40,6 +40,12 @@ address = 0x68       # via i2cdetect
 label = 1
 cycle = 0
 while cycle < 30:
+    if cycle >= 0:
+        label = 1
+    elif cycle >= 10:
+        label = 2
+    elif cycle >= 20:
+        label = 3
     labe = raw_input("any key+enter to continue")
     f = open("./data{1}/data{0}.csv".format(cycle, label), "w")
     for i in range(1000):
@@ -63,12 +69,7 @@ while cycle < 30:
 
         #print "X Rotation: " , x_rotation
         #print "Y Rotation: " , y_rotation
-        if cycle >= 0:
-            label = 1
-        elif cycle >= 10:
-            label = 2
-        elif cycle >= 20:
-            label = 3
+        
         x = '{0},{1},{2},{3},{4} \n'.format(i,acceleration_xout, acceleration_yout, acceleration_zout, int(label))
         f.write(x)
 
