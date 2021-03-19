@@ -13,7 +13,7 @@ elif arch == 'aarch64':
 elif arch == 'x86_64':
 	tensorflow = "tensorflow==2.4.0rc2"
 else:
-	raise Exception(f'Could not find TensorFlow binary for target {arch}. Please open a Github issue.')
+	raise Exception('Could not find TensorFlow binary for target {0}. Please open a Github issue.'.format(arch))
     
 requirements = [
     tensorflow,
