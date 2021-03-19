@@ -2,6 +2,7 @@
 import smbus
 import math
 import time
+from os import listdir
  
 # Register
 power_mgmt_1 = 0x6b
