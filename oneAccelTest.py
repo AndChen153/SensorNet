@@ -76,6 +76,6 @@ while cycle < 30:
 
         
     f.close()
-    print("data{0}.txt printed".format(cycle))
+    print("/data{1}/data{0}.csv printed".format(cycle, label))
     cycle += 1
 
