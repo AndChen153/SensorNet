@@ -51,7 +51,7 @@ while True:
     for i in range (low,low+15):
         start = raw_input("start?")
         print("/data{1}/data{0}.csv printed".format(str(i), str(label)))
-        f = open("./data{1}/data{0}.csv".format(str(i), str(label)), "w")
+        f = open("./trainingdata/data{1}/data{0}.csv".format(str(i), str(label)), "w")
         for i in range(1000):
             # Activate to be able to address the module
             bus.write_byte_data(address, power_mgmt_1, 0)

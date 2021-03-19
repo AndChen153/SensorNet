@@ -24,7 +24,7 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 def load_datasets():
     subjects = list()
     for folder in range(1,4):
-        for filename in listdir('./data{0}'.format(str(folder))):
+        for filename in listdir('./trainingdata/data{0}'.format(str(folder))):
             if filename.endswith("csv"):
                 values = csv.reader(open('./data{0}/'.format(str(folder)) + filename, "r"), delimiter = ",") # opens training data
                 processedlist = []

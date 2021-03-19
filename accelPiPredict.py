@@ -1,3 +1,3 @@
 '''
-https://magpi.raspberrypi.org/articles/tensorflow-ai-raspberry-pi\
+https://www.tensorflow.org/lite/guide/python#learn_more
 '''
