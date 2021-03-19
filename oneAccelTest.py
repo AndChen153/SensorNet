@@ -35,9 +35,8 @@ def get_x_rotation(x,y,z):
     return math.degrees(radians)
 
 def find_num(label):
-    for i in range (1,4):
     highest = 0
-    for filename in listdir('./data{0}'.format(i)):
+    for filename in listdir('./data{0}'.format(label)):
         highest += 1
     return highest
  
