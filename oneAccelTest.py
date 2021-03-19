@@ -37,12 +37,11 @@ def get_x_rotation(x,y,z):
 bus = smbus.SMBus(1) # bus = smbus.SMBus(0)
 address = 0x68       # via i2cdetect
 
-
+label = 1
 cycle = 0
 while cycle < 30:
     label = raw_input("activity label:")
-    f = open("data{0}.csv".format(cycle), "w")
-    print("data{0}.txt printed".format(cycle))
+    f = open("./data{1}/data{0}.csv".format(cycle, label), "w")
     for i in range(1000):
         # Activate to be able to address the module
         bus.write_byte_data(address, power_mgmt_1, 0)
@@ -77,5 +76,6 @@ while cycle < 30:
 
         
     f.close()
+    print("data{0}.txt printed".format(cycle))
     cycle += 1
 
