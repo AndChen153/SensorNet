@@ -50,8 +50,8 @@ while True:
     low = find_num(label)
     for i in range (low,low+15):
         start = raw_input("start?")
-        print("/data{1}/data{0}.csv printed".format(i, label))
-        f = open("./data{1}/data{0}.csv".format(cycle, label), "w")
+        print("/data{1}/data{0}.csv printed".format(str(i), str(label)))
+        f = open("./data{1}/data{0}.csv".format(str(i), str(label)), "w")
         for i in range(1000):
             # Activate to be able to address the module
             bus.write_byte_data(address, power_mgmt_1, 0)
