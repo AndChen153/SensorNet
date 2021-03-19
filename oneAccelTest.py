@@ -33,50 +33,41 @@ def get_y_rotation(x,y,z):
 def get_x_rotation(x,y,z):
     radians = math.atan2(y, dist(x,z))
     return math.degrees(radians)
+
+def find_num(label):
+    for i in range (1,4):
+    highest = 0
+    for filename in listdir('./data{0}'.format(i)):
+        highest += 1
+    return highest
  
 bus = smbus.SMBus(1) # bus = smbus.SMBus(0)
 address = 0x68       # via i2cdetect
 
-label = 1
 cycle = 0
-while cycle < 30:
-    if cycle >= 0:
-        label = 1
-    elif cycle >= 10:
-        label = 2
-    elif cycle >= 20:
-        label = 3
-    labe = raw_input("any key+enter to continue")
-    f = open("./data{1}/data{0}.csv".format(cycle, label), "w")
-    for i in range(1000):
-        # Activate to be able to address the module
-        bus.write_byte_data(address, power_mgmt_1, 0)
-        
-        acceleration_xout = read_word_2c(0x3b)
-        acceleration_yout = read_word_2c(0x3d)
-        acceleration_zout = read_word_2c(0x3f)
-        
-        acceleration_xout_scaled = acceleration_xout / 16384.0
-        acceleration_yout_scaled = acceleration_yout / 16384.0
-        acceleration_zout_scaled = acceleration_zout / 16384.0
-        
-        #print "acceleration_xout: ", ("%6d" % acceleration_xout), " Scaled: ", acceleration_xout_scaled
-        #print "acceleration_yout: ", ("%6d" % acceleration_yout), " Scaled: ", acceleration_yout_scaled
-        #print "acceleration_zout: ", ("%6d" % acceleration_zout), " Scaled: ", acceleration_zout_scaled
-        
-        #x_rotation = get_x_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
-        #y_rotation = get_y_rotation(acceleration_xout_scaled, acceleration_yout_scaled, acceleration_zout_scaled)
+while True:
+    label = raw_input("activity label? (runs 15 times)")
+    low = find_num(label)
+    for i in range (low,low+15):
+        start = raw_input("start?")
+        print("/data{1}/data{0}.csv printed".format(i, label))
+        f = open("./data{1}/data{0}.csv".format(cycle, label), "w")
+        for i in range(1000):
+            # Activate to be able to address the module
+            bus.write_byte_data(address, power_mgmt_1, 0)
+            
+            acceleration_xout = read_word_2c(0x3b)
+            acceleration_yout = read_word_2c(0x3d)
+            acceleration_zout = read_word_2c(0x3f)
+            
+            acceleration_xout_scaled = acceleration_xout / 16384.0
+            acceleration_yout_scaled = acceleration_yout / 16384.0
+            acceleration_zout_scaled = acceleration_zout / 16384.0
+            
+            x = '{0},{1},{2},{3},{4} \n'.format(i,acceleration_xout, acceleration_yout, acceleration_zout, int(label))
+            f.write(x)
 
-        #print "X Rotation: " , x_rotation
-        #print "Y Rotation: " , y_rotation
-        
-        x = '{0},{1},{2},{3},{4} \n'.format(i,acceleration_xout, acceleration_yout, acceleration_zout, int(label))
-        f.write(x)
+            time.sleep(0.0001)
 
-        time.sleep(0.0001)
-
-        
-    f.close()
-    print("/data{1}/data{0}.csv printed".format(cycle, label))
-    cycle += 1
-
+            
+        f.close()
