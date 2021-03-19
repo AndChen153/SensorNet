@@ -37,7 +37,7 @@ def get_x_rotation(x,y,z):
 
 def find_num(label):
     highest = 0
-    for filename in listdir('./data{0}'.format(label)):
+    for filename in listdir('./trainingdata/data{0}'.format(label)):
         highest += 1
     return highest
  
@@ -48,7 +48,7 @@ cycle = 0
 while True:
     label = raw_input("activity label? (runs 15 times)")
     low = find_num(label)
-    for i in range (low,low+15):
+    for i in range (low,low+50):
         start = raw_input("start?")
         print("/data{1}/data{0}.csv printed".format(str(i), str(label)))
         f = open("./trainingdata/data{1}/data{0}.csv".format(str(i), str(label)), "w")

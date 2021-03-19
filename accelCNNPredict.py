@@ -7,16 +7,17 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import csv
+from os import listdir
 
 model = tf.keras.models.load_model('./Model')
 # Check its architecture
-model.summary()
+#model.summary()
 
 def load_datasets():
     subjects = list()
     for filename in listdir('./testingdata'):
         if filename.endswith("csv"):
-            values = csv.reader(open('./data{0}/'.format(str(folder)) + filename, "r"), delimiter = ",") # opens training data
+            values = csv.reader(open("./testingdata/" + filename, "r"), delimiter = ",") # opens training data
             processedlist = []
             for row in values:
                 temp = [row[0],row[1],row[2],row[3],row[4]]
@@ -26,6 +27,7 @@ def load_datasets():
 
 def get_frames(df):
     frames = []
+    labels = []
     for dataset in df:
         frame = []
         for i in range(0,len(dataset)):
@@ -40,20 +42,22 @@ def get_frames(df):
     labels = np.asarray(labels)
     return frames,labels
 
-columns = ["time", "x", "y", "z"]
+columns = ["time", "x", "y", "z", "label"]
 subjects = load_datasets()
 datasets = []
 for i in range(0,len(subjects)):
     datasets.append(pd.DataFrame(data = subjects[i], columns = columns))
 
 samples_predict, samples_answers = get_frames(datasets)
-samples_predict = samples_predict.reshape(len(samples_import), 1000, 3, 1)
+samples_predict = samples_predict.reshape(len(subjects), 1000, 3, 1)
 
 predictions = model.predict(samples_predict)
 
 classes = np.argmax(predictions, axis = 1)
+
 correct = 0
-for i in range(0,len(classes))
+for i in range(0,len(classes)):
     if classes[i] == samples_answers[i]:
         correct += 1
 print("amount correct: " , correct/len(classes))
+print(classes)

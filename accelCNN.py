@@ -26,7 +26,7 @@ def load_datasets():
     for folder in range(1,4):
         for filename in listdir('./trainingdata/data{0}'.format(str(folder))):
             if filename.endswith("csv"):
-                values = csv.reader(open('./data{0}/'.format(str(folder)) + filename, "r"), delimiter = ",") # opens training data
+                values = csv.reader(open('./trainingdata/data{0}/'.format(str(folder)) + filename, "r"), delimiter = ",") # opens training data
                 processedlist = []
                 for row in values:
                     temp = [row[0],row[1],row[2],row[3],row[4]]
@@ -83,10 +83,6 @@ datasets = make_pandas(subjects)
 
 X, Y = get_frames(datasets)
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=4)
-
-#print(len(X_train))
-#print(X_train.shape)
-
 X_train = X_train.reshape(len(X_train), 1000, 3, 1)
 X_test = X_test.reshape(len(X_test), 1000, 3, 1)
 print(X_train[0].shape)
@@ -109,8 +105,6 @@ epochnum = 60
 
 model.compile(optimizer=Adam(learning_rate = 0.001), loss = 'sparse_categorical_crossentropy', metrics = ['accuracy'])
 history = model.fit(X_train, y_train, epochs = epochnum, validation_data= (X_test, y_test), verbose=1)
-
-
 
 def plot_learningCurve(history, epochs):
   # Plot training & validation accuracy values
