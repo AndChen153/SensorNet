@@ -12,7 +12,7 @@ model = tf.keras.models.load_model('./Model')
 # Check its architecture
 model.summary()
 
-samples_import = ["./data/data4.csv", "./data/data9.csv","./data/data8.csv"]
+samples_import = ["./data3/data4.csv", "./data2/data9.csv","./data3/data8.csv"]
 
 def load_datasets(datasets):
     subjects = list()
